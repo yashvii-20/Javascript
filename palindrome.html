@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Palindrome Number</title>
+</head>
+<body>
+  <h1>Palindrome Number Checker</h1>
+  <p id="result"></p>
+
+  <script>
+    let num = 121;
+    let originalNum = num;
+    let reversed = 0;
+
+    while (num > 0) {
+      let digit = num % 10;           // Get last digit
+      reversed = reversed * 10 + digit; // Append to reversed
+      num = Math.floor(num / 10);     // Remove last digit
+    }
+
+    if (originalNum === reversed) {
+      document.getElementById("result").innerHTML = originalNum + " is a palindrome number.";
+    } else {
+      document.getElementById("result").innerHTML = originalNum + " is not a palindrome number.";
+    }
+  </script>
+</body>
+</html>
