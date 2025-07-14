@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marksheet Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .marksheet-container {
+            background-color: rgb(222, 209, 183);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .student-name {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        .fail {
+            color: red;
+            font-weight: bold;
+        }
+
+        .result-message {
+            padding: 15px;
+            text-align: center;
+            border-radius: 4px;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        .pass {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+
+        .fail-message {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+
+        .back-button {
+            width: 100%;
+            justify-content: center;
+            text-align: center;
+            padding: 10px;
+            background-color: #af784c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 17px;
+            margin-top: 4px;
+            /* rest of the styles */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="marksheet-container">
+        <div class="student-name" id="studentName"></div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Marks</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody id="marksTableBody">
+                <!-- Marks will be inserted here by JavaScript -->
+            </tbody>
+        </table>
+
+        <div class="result-message" id="resultMessage"></div>
+        <br>
+        <a href="register.html" class="back-button">Back to Home</a>
+    </div>
+
+    <script>
+        // Get URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+
+        // Get student name
+        const studentName = urlParams.get('name');
+        document.getElementById('studentName').textContent = studentName;
+
+        // Subjects data
+        const subjects = [
+            { name: 'Biology', param: 'bio' },
+            { name: 'Chemistry', param: 'chem' },
+            { name: 'Physics', param: 'phy' },
+            { name: 'Mathematics', param: 'math' },
+            { name: 'English', param: 'english' }
+        ];
+
+        const tableBody = document.getElementById('marksTableBody');
+        let totalMarks = 0;
+        let isFailed = false;
+
+        // Process each subject
+        subjects.forEach(subject => {
+            const marks = parseInt(urlParams.get(subject.param));
+            totalMarks += marks;
+
+            // Calculate grade
+            let grade;
+            if (marks >= 90) grade = 'A+';
+            else if (marks >= 80) grade = 'A';
+            else if (marks >= 70) grade = 'B';
+            else if (marks >= 60) grade = 'C';
+            else if (marks >= 35) grade = 'D';
+            else {
+                grade = 'F (Fail)';
+                isFailed = true;
+            }
+
+            // Create table row
+            const row = document.createElement('tr');
+            if (marks < 35) row.classList.add('fail');
+
+            row.innerHTML = `
+                <td>${subject.name}</td>
+                <td>${marks}</td>
+                <td>${grade}</td>
+            `;
+
+            tableBody.appendChild(row);
+        });
+
+        // Calculate percentage
+        const percentage = (totalMarks / (subjects.length * 100)) * 100;
+
+        // Display result message
+        const resultMessage = document.getElementById('resultMessage');
+        if (isFailed) {
+            resultMessage.textContent = 'Oops!Better luck next time.';
+            resultMessage.classList.add('fail-message');
+        } else {
+            resultMessage.textContent = `Congratulation! You have been Promoted with ${percentage.toFixed(2)}%`;
+            resultMessage.classList.add('pass');
+        }
+    </script>
+</body>
+
+</html>
