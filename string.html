@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>String Methods</title>
+</head>
+<body>
+
+  <h2>Enter Text Below</h2>
+  <textarea id="inputText" rows="4" cols="50" placeholder="Type your string here..."></textarea><br>
+
+  <button onclick="applyTrim()">Trim</button>
+  <button onclick="applyReplace()">Replace ("i" with "j")</button>
+  <button onclick="applySplit()">Split ()</button>
+  <button onclick="applySlice()">Slice (0, 4)</button>
+  <button onclick="applySubstring()">Substring (0, 4)</button>
+  <button onclick="applyToLower()">To Lower Case</button>
+  <button onclick="applyToUpper()">To Upper Case</button>
+
+  <h3>Result:</h3>
+  <div id="result"></div>
+
+  <script>
+    function getInput() {
+      return document.getElementById("inputText").value;
+    }
+
+    function displayResult(result) {
+      document.getElementById("result").textContent = result;
+    }
+
+    function applyTrim() {
+      displayResult(getInput().trim());
+    }
+
+    function applyReplace() {
+      displayResult(getInput().replaceAll("i", "j")); 
+    }
+
+    function applySplit() {
+      displayResult(getInput().split(" "));
+    }
+
+    function applySlice() {
+      displayResult(getInput().slice(0, 5));
+    }
+
+    function applySubstring() {
+      displayResult(getInput().substring(0, 5));
+    }
+
+    function applyToLower() {
+      displayResult(getInput().toLowerCase());
+    }
+
+    function applyToUpper() {
+      displayResult(getInput().toUpperCase());
+    }
+  </script>
+
+</body>
+</html>

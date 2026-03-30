@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Split,Pop</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 20px auto; }
+    input { width: 100%; padding: 8px; margin: 5px 0; }
+    button { padding: 8px 15px; margin-right: 5px; }
+    #result { margin-top: 15px; padding: 10px; border: 1px solid #ddd; min-height: 50px; }
+  </style>
+</head>
+<body>
+  <label for="inputValues">Enter comma separated values:</label>
+  <input type="text" id="inputValues" placeholder="e.g. apple, banana, cherry">
+  <div>
+    <button onclick="process('split')">Split</button>
+    <button onclick="process('pop')">Pop</button>
+  </div>
+  <div id="result"></div>
+
+  <script>
+    let values = [];
+    const input = document.getElementById('inputValues');
+    const result = document.getElementById('result');
+    
+    function process(action) {
+      if (action === 'split') {
+        values = input.value.split(',').map(item => item.trim());
+        showResult(`Split into: [${values.map(v => `"${v}"`).join(', ')}]`);
+      } 
+      else if (action === 'pop') {
+        if (!values.length) return alert('Split values first!');
+        
+        const popped = values.pop();
+        const newValue = prompt('Edit popped value:', popped);
+        
+        if (newValue !== null) {
+          values.push(newValue.trim());
+          showResult(`Popped: "${popped}"<br>Updated array: [${values.map(v => `"${v}"`).join(', ')}]`);
+        } else {
+          showResult(`Popped: "${popped}"<br>Remaining: [${values.map(v => `"${v}"`).join(', ')}]`);
+        }
+      }
+    }
+    
+    function showResult(message) {
+      result.innerHTML = message;
+    }
+  </script>
+</body>
+</html>

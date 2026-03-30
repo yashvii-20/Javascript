@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Marksheet Input</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .marksheet-form {
+            background-color: rgb(222, 209, 183);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+
+        .marksheet-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .enter-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #af784c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .enter-btn:hover {
+            background-color: #743c16;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="marksheet-form">
+        <h2>Student Marksheet</h2>
+        <form id="marksForm" action="marksheet.html" method="GET">
+            <div class="form-group">
+                <label for="name">Student Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Bio">Biology</label>
+                <input type="number" id="bio" name="bio" min="0" max="100" required >
+            </div>
+
+            <div class="form-group">
+                <label for="chem">Chemistry:</label>
+                <input type="number" id="chem" name="chem" min="0" max="100" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phy">Physics:</label>
+                <input type="number" id="phy" name="phy" min="0" max="100" required>
+
+
+                <div class="form-group">
+                    <label for="math">Mathematics:</label>
+                    <input type="number" id="math" name="math" min="0" max="100" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="english">English:</label>
+                    <input type="number" id="english" name="english" min="0" max="100" required>
+
+
+                    <button type="submit" class="enter-btn">Enter</button>
+        </form>
+    </div>
+</body>
+
+</html>

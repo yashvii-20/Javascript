@@ -1,0 +1,23 @@
+<html>
+<head>
+  <title>Star Pattern-While Loop</title>
+</head>
+<body>
+  <script>
+    let row = 1;
+
+    while (row <= 5) {
+      let stars = "";
+      let col = 1;
+
+      while (col <= row) {
+        stars += "* ";
+        col++;
+      }
+
+      document.write(stars + "<br>");
+      row++;
+    }
+  </script>
+</body>
+</html>

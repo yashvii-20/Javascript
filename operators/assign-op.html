@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Assignment Operators</title>
+</head>
+<body>
+  <h1>Assignment Operators</h1>
+
+  <p id="demo"></p>
+  <p id="demo1"></p>
+  <p id="demo2"></p>
+  <p id="demo3"></p>
+  <p id="demo4"></p>
+  <p id="demo5"></p>
+  <p id="demo6"></p>
+
+  <script>
+    var x;
+
+    x = 10;
+    document.getElementById("demo").innerHTML = "Initial value (x = 10): " + x;
+
+    x += 5;  // x = x + 5
+    document.getElementById("demo1").innerHTML = "After x += 5: " + x;
+
+    x -= 3;  // x = x - 3
+    document.getElementById("demo2").innerHTML = "After x -= 3: " + x;
+
+    x *= 2;  // x = x * 2
+    document.getElementById("demo3").innerHTML = "After x *= 2: " + x;
+
+    x /= 4;  // x = x / 4
+    document.getElementById("demo4").innerHTML = "After x /= 4: " + x;
+
+    x %= 3;  // x = x % 3 
+    document.getElementById("demo5").innerHTML = "After x %= 3: " + x;
+
+    x **= 2; // x = x ** 2
+    document.getElementById("demo6").innerHTML = "After x **= 2: " + x;
+  </script>
+</body>
+</html>

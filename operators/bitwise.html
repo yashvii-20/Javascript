@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bitwise Addition and Subtraction</title>
+</head>
+<body>
+  <h2>Another Example: Bitwise Add & Subtract</h2>
+  <p id="addOutput"></p>
+  <p id="subOutput"></p>
+
+  <script>
+    // Function to perform addition without using +
+    function bitwiseAdd(x, y) {
+      while (y !== 0) {
+        let carry = x & y;
+        x = x ^ y;
+        y = carry << 1;
+      }
+      return x;
+    }
+
+    // Function to perform subtraction without using -
+    function bitwiseSubtract(x, y) {
+      while (y !== 0) {
+        let borrow = (~x) & y;
+        x = x ^ y;
+        y = borrow << 1;
+      }
+      return x;
+    }
+
+    // New example numbers
+    let a = 3;
+    let b = 5;
+
+    document.getElementById("addOutput").innerHTML =
+      "Addition of " + a + " and " + b + " is: " + bitwiseAdd(a, b);
+
+    document.getElementById("subOutput").innerHTML =
+      "Subtraction of " + b + " from " + a + " is: " + bitwiseSubtract(a, b);
+  </script>
+</body>
+</html>
